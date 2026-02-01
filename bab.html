@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            background: url('file:///C:/Users/LENOVO/Downloads/hey.jpg') no-repeat center center fixed;
+            background-size: cover; /* Ensures the image covers the whole screen */
+            
+            font-family: 'Nunito', sans-serif;
+            overflow: hidden; 
+        }
+        
+        .box {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            /* Removed position: relative so the absolute button moves relative to the body/window */
+        }
+
+        h1 {
+            color: #ff4d79;
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-family: 'Nunito', sans-serif;
+            margin: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #yes {
+            background-color: #ff4d79;
+            color: white;
+            z-index: 10;
+            position: relative; /* Keeps "Yes" inside the box flow */
+        }
+
+        #no {
+            background-color: #ffffff;
+            color: #ff4d79;
+            border: 2px solid #ff4d79;
+            position: absolute; /* Essential for your movement logic */
+        }
+
+        #gif {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #gif h2 {
+            color: #ff4d79;
+            font-family: 'Nunito', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Will you be my Valentine, SaraJi? ❤️</h1>
+	
+        <div>
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+        
+        <div id="gif">
+            <h2>You had no choice 😁💖</h2>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXBma2VyZTZvZXc4cWVnZW05YWt3OG1maTNxeG96OGJyanpxa203aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fHoqSTQTsgSbfUoiTw/giphy.gif" alt="Funny Gif">
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById("no");
+        const yesButton = document.getElementById("yes");
+        const gifDiv = document.getElementById("gif");
+        
+        // YOUR EXACT ORIGINAL MOVEMENT LOGIC
+        noButton.addEventListener("mouseover", () => {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        });
+
+        yesButton.addEventListener("click", () => {
+            gifDiv.style.display = "block";
+            // Optional: Hide buttons after clicking yes so it looks cleaner
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
+            document.querySelector('h1').style.display = "none";
+        });
+    </script>
+</body>
+</html>
